@@ -1,0 +1,29 @@
+services:
+  # --- API (Node) ---
+  - type: web
+    name: student-tasks-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: student-tasks-db
+          property: connectionString
+      - key: PGSSLMODE
+        value: require
+    healthCheckPath: /health
+
+  # --- Frontend estático ---
+  - type: web
+    name: student-tasks-frontend
+    runtime: static
+    rootDir: frontend
+    staticPublishPath: "."
+
+databases:
+  - name: student-tasks-db
+    plan: free

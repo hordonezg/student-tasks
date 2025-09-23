@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Student Tasks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { margin-bottom: .5rem; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    form > div { margin-bottom: .5rem; }
+    input, textarea, button { padding: .5rem; font-size: 1rem; }
+    .row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hidden { display: none; }
+    .task { display: flex; justify-content: space-between; align-items: center; border: 1px solid #eee; padding: .5rem .75rem; border-radius: 6px; margin-bottom: .5rem; }
+    .pill { padding: .15rem .5rem; border-radius: 999px; background: #f3f3f3; }
+    .ok { color: #137333; }
+    .warn { color: #b06000; }
+  </style>
+</head>
+<body>
+  <h1>Student Tasks</h1>
+  <p>Registro, login, creación y flujo de tareas (pending → in_progress → done).</p>
+
+  <div id="auth" class="card">
+    <h2>Autenticación</h2>
+    <div class="row">
+      <form id="formRegister" class="card" style="flex:1">
+        <h3>Registro</h3>
+        <div><input id="regName" placeholder="Nombre" required /></div>
+        <div><input id="regEmail" type="email" placeholder="Email" required /></div>
+        <div><input id="regPassword" type="password" placeholder="Password" required /></div>
+        <button>Registrarme</button>
+        <p id="regMsg"></p>
+      </form>
+
+      <form id="formLogin" class="card" style="flex:1">
+        <h3>Login</h3>
+        <div><input id="logEmail" type="email" placeholder="Email" required /></div>
+        <div><input id="logPassword" type="password" placeholder="Password" required /></div>
+        <button>Entrar</button>
+        <p id="logMsg"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="app" class="card hidden">
+    <h2>Mis tareas</h2>
+    <p>Usuario: <strong id="userName"></strong> · <span id="userEmail"></span> · ID: <code id="userId"></code>
+      · <button id="btnLogout">Cerrar sesión</button></p>
+
+    <form id="formTask" class="card">
+      <h3>Nueva tarea</h3>
+      <div><input id="taskTitle" placeholder="Título" required /></div>
+      <div><textarea id="taskDesc" placeholder="Descripción (opcional)"></textarea></div>
+      <button>Crear</button>
+      <p id="taskMsg"></p>
+    </form>
+
+    <div class="card">
+      <h3>Listado</h3>
+      <div id="tasks"></div>
+      <p id="listMsg"></p>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
