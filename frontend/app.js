@@ -3,7 +3,7 @@
 // - En producción: REEMPLAZA 'REPLACE_WITH_BACKEND_URL' por tu URL de backend en Render (p.ej. https://student-tasks-api.onrender.com)
 const API_BASE = location.hostname.includes('localhost')
   ? 'http://localhost:3000'
-  : 'REPLACE_WITH_BACKEND_URL';
+  : 'https://student-tasks-api-sho5.onrender.com';
 
 const $ = (id) => document.getElementById(id);
 
